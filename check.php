@@ -5,18 +5,23 @@
     $content = $_POST['content'];
     // echo $nickname;
 
+    //ニックネーム：値の有無で処理を分岐
     if ($nickname == '') {
         $nickname_result = 'ニックネームが入力されてません。';
     } else {
         $nickname_result = 'ようこそ、' . $nickname . '様';
     }
 
+    //メールアドレス：値の有無で処理を分岐
     if ($email == '') {
         $email_result = 'メールアドレスが入力されてません。';
     } else {
         $email_result = 'メールアドレス:' . $email;
     }
 
+    //お問い合わせ内容：値の有無で処理を分岐
+    if ($content == '') {
+        $content_result = 'お問い合わせ内容が入力されていません。';
     } else {
         $content_result = 'お問い合わせ内容:' . $content;
     }
