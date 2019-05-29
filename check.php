@@ -37,6 +37,12 @@
     <p><?php echo $nickname_result ?></p>
     <p><?php echo $email_result ?></p>
     <p><?php echo $content_result ?></p>
+    <form method="POST" action="thanks.php">
+        <input type="button" value="戻る" onclick="history.back()">
+        <?php if ($email != '' && $nickname != '' && $content != ''): //コロン構文?>
+            <input type="submit" value="OK">
+        <?php endif;?>
+    </form>
 </body>
 </html>
 
