@@ -38,7 +38,6 @@
     <p><?php echo $email_result ?></p>
     <p><?php echo $content_result ?></p>
     <form method="POST" action="thanks.php">
-
         <input type="hidden" name="nickname" value="<?php echo $nickname?>">
         <input type="hidden" name="email" value="<?php echo $email?>">
         <input type="hidden" name="content" value="<?php echo $content?>">
