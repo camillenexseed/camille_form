@@ -8,10 +8,9 @@
     require_once('function.php');
 
     //スーパーグローバル関数
-
     $nickname = h($_POST['nickname']);
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $email = h($_POST['email']);
+    $content = h($_POST['content']);
     // echo $nickname;
 
     //ニックネーム：値の有無で処理を分岐
