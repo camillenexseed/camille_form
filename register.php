@@ -1,9 +1,10 @@
 <?php
+    $title = '新規ユーザー登録';
     // ユーザー登録ページ
     require_once('includes/header.php');
 ?>
 <div class="container mt-5">
-  <h1 class="mb-3">お問い合わせ情報入力</h1>
+  <h1 class="mb-3"><?php echo $title ?></h1>
   <form method="POST" action="check.php">
     <div class="form-group">
       <label for="nickname">ニックネーム</label>

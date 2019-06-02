@@ -1,5 +1,6 @@
 <?php
     // 確認ページ
+    $title = '新規ユーザー登録(確認)';
     //メソッドがGETの時はトップページにリダイレクト
     if($_SERVER['REQUEST_METHOD'] !== 'POST'){
         header('Location: register.php');
@@ -37,7 +38,7 @@
     require_once('includes/header.php');
 ?>
 <div class="container mt-5">
-    <h1 class="mb-3">入力内容確認</h1>
+    <h1 class="mb-3"><?php echo $title ?></h1>
     <p><?php echo $nickname_result ?></p>
     <p><?php echo $email_result ?></p>
     <p><?php echo $content_result ?></p>

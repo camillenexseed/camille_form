@@ -1,5 +1,6 @@
 <?php
 // 検索結果ページ
+$title = '検索結果';
 
 require_once('function.php');
 require_once('dbconnect.php');
@@ -16,16 +17,24 @@ $results = $stmt->fetchAll();
 require_once('includes/header.php');
 ?>
 <div class="container mt-5">
-  <p><?php echo $nickname ?>の検索結果</p>
-  <?php foreach ($results as $result): ?>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h3 class="card-title"><?php echo h($result['nickname']) ?></h3>
-      <p><?php echo h($result['email']) ?></p>
-      <p><?php echo h($result['content']) ?></p>
+  <h1 class="mb-3"><?php echo $title ?></h1>
+  <p><?php echo $nickname ?>の検索</p>
+  <?php if (count($results) === 0): ?>
+    <p>該当するニックネームはいません。</p>
+  <?php else: ?>
+    <?php foreach ($results as $result): ?>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="card-title"><?php echo h($result['nickname']) ?></h3>
+        <p><?php echo h($result['email']) ?></p>
+        <p><?php echo h($result['content']) ?></p>
+        </div>
       </div>
-    </div>
-  <?php endforeach;?>
+    <?php endforeach;?>
+  <?php endif ?>
+  <p class="mt-5">
+    <a href="index.php" class="btn btn-primary btn-block">ユーザー一覧へ戻る</a>
+  </p>
 </div>
 </body>
 </html>

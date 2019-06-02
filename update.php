@@ -6,10 +6,10 @@ require_once('dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // 値を取得する
-    $id = $_POST['id'];
-    $nickname = $_POST['nickname'];
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $id = h($_POST['id']);
+    $nickname = h($_POST['nickname']);
+    $email = h($_POST['email']);
+    $content = h($_POST['content']);
 
     $stmt = $dbh->prepare("UPDATE surveys SET nickname = ?, email = ?, content = ? WHERE id = $id");
     $stmt->execute([$nickname, $email, $content]);
@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
     $result = $stmt->fetchAll();
     $result = $result[0];
 }else{
-  header('Location: index.php');
+    header('Location: index.php');
 }
 
 //ヘッダーのソースコード読み込み

@@ -1,5 +1,5 @@
 <?php
-// http://localhost/php_contact_form/list.php
+$title = 'ユーザー一覧';
 
 require_once('function.php');
 require_once('dbconnect.php');
@@ -18,7 +18,7 @@ $results = $stmt->fetchAll();
 require_once('includes/header.php');
 ?>
   <div class="container mt-5">
-    <h1 class="mb-3">ユーザー一覧</h1>
+    <h1 class="mb-3"><?php echo $title ?></h1>
     <?php foreach ($results as $result): ?>
       <div class="card mb-3">
         <div class="card-body">
