@@ -1,5 +1,5 @@
 <?php
-// search.php
+// 検索結果ページ
 
 require_once('function.php');
 require_once('dbconnect.php');
@@ -12,23 +12,20 @@ if (isset($_GET['nickname'])) {
 $stmt = $dbh->prepare('SELECT * FROM surveys WHERE nickname like ?');
 $stmt->execute(["%$nickname%"]);
 $results = $stmt->fetchAll();
+
+require_once('includes/header.php');
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <form action="search.php" method="GET">
-        <p>検索したいnicknameを入力してください。</p>
-        <input type="text" name="nickname">
-        <input type="submit" value="検索">
-    </form>
-    <?php foreach ($results as $result): ?>
-        <p><?php echo h($result['nickname']) ?></p>
-        <p><?php echo h($result['email']) ?></p>
-        <p><?php echo h($result['content']) ?></p>
-    <?php endforeach;?>
+<div class="container mt-5">
+  <p><?php echo $nickname ?>の検索結果</p>
+  <?php foreach ($results as $result): ?>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h3 class="card-title"><?php echo h($result['nickname']) ?></h3>
+      <p><?php echo h($result['email']) ?></p>
+      <p><?php echo h($result['content']) ?></p>
+      </div>
+    </div>
+  <?php endforeach;?>
+</div>
 </body>
 </html>

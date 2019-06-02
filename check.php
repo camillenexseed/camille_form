@@ -1,7 +1,8 @@
 <?php
+    // 確認ページ
     //メソッドがGETの時はトップページにリダイレクト
     if($_SERVER['REQUEST_METHOD'] !== 'POST'){
-        header('Location: index.html');
+        header('Location: register.php');
     }
 
     // 関数の呼び出し
@@ -33,15 +34,10 @@
     } else {
         $content_result = 'お問い合わせ内容:' . $content;
     }
+    require_once('includes/header.php');
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <title>入力内容確認</title>
-</head>
-<body>
-    <h1>入力内容確認</h1>
+<div class="container mt-5">
+    <h1 class="mb-3">入力内容確認</h1>
     <p><?php echo $nickname_result ?></p>
     <p><?php echo $email_result ?></p>
     <p><?php echo $content_result ?></p>
@@ -50,13 +46,14 @@
         <input type="hidden" name="email" value="<?php echo $email?>">
         <input type="hidden" name="content" value="<?php echo $content?>">
 
-        <input type="button" value="戻る" onclick="history.back()">
+        <input type="button" value="戻る" onclick="history.back()" class="btn btn-dark">
         <?php if ($email != '' && $nickname != '' && $content != ''):
             //コロン構文
             ?>
-            <input type="submit" value="OK">
+            <input type="submit" value="この内容で送信する" class="btn btn-success">
         <?php endif;?>
     </form>
+</div>
 </body>
 </html>
 
